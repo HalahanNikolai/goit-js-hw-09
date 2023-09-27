@@ -33,7 +33,12 @@ function onPromiseCreate(e) {
   let inputAmount = Number(amount.value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
+    // if ([i] == 1) {
+    //   inputDelay = 0;
+    // }
+    // else {
+    //   inputDelay += inputStep;
+    // }
 
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
@@ -47,7 +52,9 @@ function onPromiseCreate(e) {
           `❌ Rejected promise ${position} in ${delay}ms`,
           options
         );
+
       });
+    inputDelay += inputStep;
     e.currentTarget.reset();
   }
 }
